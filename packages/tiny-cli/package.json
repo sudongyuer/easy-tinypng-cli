@@ -1,6 +1,7 @@
 {
   "name": "tiny-cli",
-  "version": "0.5.0",
+  "type": "module",
+  "version": "0.0.0",
   "description": "",
   "author": "sudongyuer",
   "license": "MIT",
@@ -12,12 +13,17 @@
   "exports": {
     ".": {
       "types": "./dist/index.d.ts",
-      "require": "./dist/index.cjs",
-      "import": "./dist/index.mjs"
+      "require": "./dist/index.js",
+      "import": "./dist/index.js"
+    },
+    "./utils": {
+      "types": "./dist/utils.d.ts",
+      "require": "./dist/utils.js",
+      "import": "./dist/utils.js"
     }
   },
-  "main": "./dist/index.mjs",
-  "module": "./dist/index.mjs",
+  "main": "./dist/index.js",
+  "module": "./dist/index.js",
   "types": "./dist/index.d.ts",
   "typesVersions": {
     "*": {
@@ -37,6 +43,7 @@
     "dev": "unbuild --stub --declaration",
     "build": "unbuild",
     "test": "vitest",
+    "tsc": "rimraf ./dist && tsc",
     "version": "changeset version",
     "changeset": "changeset add",
     "release": "pnpm run build && pnpm run release:only",
@@ -46,10 +53,16 @@
     "lint-fix": "eslint . --fix",
     "try": "tsx src/index.ts"
   },
+  "dependencies": {
+    "chokidar": "^3.5.3",
+    "tinify": "^1.6.1",
+    "unconfig": "^0.3.5"
+  },
   "devDependencies": {
     "@sudongyuer/eslint-config": "^0.1.3",
     "@types/node": "^18.0.0",
     "eslint": "^8.18.0",
+    "rimraf": "^3.0.2",
     "tsx": "^3.6.0",
     "typescript": "^4.7.4",
     "unbuild": "^0.7.4",
