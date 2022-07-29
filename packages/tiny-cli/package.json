@@ -41,7 +41,7 @@
   ],
   "scripts": {
     "dev": "unbuild --stub --declaration",
-    "build": "unbuild",
+    "build": "rimraf ./dist && tsc",
     "test": "vitest",
     "tsc": "rimraf ./dist && tsc",
     "version": "changeset version",
