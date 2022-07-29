@@ -1,13 +1,13 @@
 {
-  "name": "tinypng-cli-monorepo",
+  "name": "easy-easy-tinypng-cli-monorepo",
   "version": "0.5.0",
   "description": "",
   "author": "sudongyuer",
   "license": "MIT",
   "funding": "https://github.com/sponsors/sudongyuer",
-  "homepage": "https://github.com/sudongyuer/tinypng-clit#readme",
-  "repository": "https://github.com/sudongyuer/tinypng-clit",
-  "bugs": "https://github.com/sudongyuer/tinypng-clit/issues",
+  "homepage": "https://github.com/sudongyuer/easy-easy-tinypng-clit#readme",
+  "repository": "https://github.com/sudongyuer/easy-easy-tinypng-clit",
+  "bugs": "https://github.com/sudongyuer/easy-easy-tinypng-clit/issues",
   "keywords": [],
   "exports": {
     ".": {

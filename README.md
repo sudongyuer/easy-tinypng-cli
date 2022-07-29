@@ -1,4 +1,4 @@
-# tinypng-cli
+# easy-easy-tinypng-cli
 
 > A tinypng cli to compress images.
 

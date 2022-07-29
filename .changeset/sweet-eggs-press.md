@@ -1,5 +1,5 @@
 ---
-"tinypng-cli": patch
+"easy-easy-tinypng-cli": patch
 ---
 
 update ci

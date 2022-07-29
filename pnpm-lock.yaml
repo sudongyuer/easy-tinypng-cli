@@ -33,9 +33,9 @@ importers:
       '@types/react': ^18.0.15
       '@types/react-dom': ^18.0.6
       '@vitejs/plugin-react': ^2.0.0
+      easy-tinypng-cli: workspace:*
       react: ^18.2.0
       react-dom: ^18.2.0
-      tiny-cli: workspace:*
       typescript: ^4.6.4
       vite: ^3.0.0
     dependencies:
@@ -45,11 +45,11 @@ importers:
       '@types/react': 18.0.15
       '@types/react-dom': 18.0.6
       '@vitejs/plugin-react': 2.0.0_vite@3.0.4
-      tiny-cli: link:../tiny-cli
+      easy-tinypng-cli: link:../tinypng-cli
       typescript: 4.7.4
       vite: 3.0.4
 
-  packages/tiny-cli:
+  packages/tinypng-cli:
     specifiers:
       '@sudongyuer/eslint-config': ^0.1.3
       '@types/node': ^18.0.0
