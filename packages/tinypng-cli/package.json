@@ -1,14 +1,14 @@
 {
-  "name": "tiny-cli",
+  "name": "tinypng-cli",
   "type": "module",
   "version": "0.0.1",
   "description": "",
   "author": "sudongyuer",
   "license": "MIT",
   "funding": "https://github.com/sponsors/sudongyuer",
-  "homepage": "https://github.com/sudongyuer/tiny-clit#readme",
-  "repository": "https://github.com/sudongyuer/tiny-clit",
-  "bugs": "https://github.com/sudongyuer/tiny-clit/issues",
+  "homepage": "https://github.com/sudongyuer/tinypng-clit#readme",
+  "repository": "https://github.com/sudongyuer/tinypng-clit",
+  "bugs": "https://github.com/sudongyuer/tinypng-clit/issues",
   "keywords": [],
   "exports": {
     ".": {

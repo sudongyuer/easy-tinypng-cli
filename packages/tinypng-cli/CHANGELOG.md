@@ -1,4 +1,4 @@
-# tiny-cli
+# tinypng-cli
 
 ## 0.0.1
 

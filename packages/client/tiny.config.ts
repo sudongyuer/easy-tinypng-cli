@@ -1,4 +1,4 @@
-import { defineTinyConfig } from 'tiny-cli/utils'
+import { defineTinyConfig } from 'tinypng-cli/utils'
 
 export default defineTinyConfig({
   configs: [
