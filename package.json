@@ -1,7 +1,6 @@
 {
   "name": "tiny-cli-monorepo",
   "version": "0.5.0",
-  "packageManager": "pnpm@7.1.5",
   "description": "",
   "author": "sudongyuer",
   "license": "MIT",
