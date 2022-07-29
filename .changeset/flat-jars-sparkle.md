@@ -1,5 +1,0 @@
----
-"tiny-cli": patch
----
-
-publish
