@@ -27,6 +27,9 @@
       ]
     }
   },
+  "bin": {
+    "tiny": "bin/optimize.js"
+  },
   "files": [
     "dist"
   ],
