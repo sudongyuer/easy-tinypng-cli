@@ -1,5 +1,11 @@
 # easy-tinypng-cli
 
+## 0.2.1
+
+### Patch Changes
+
+- fbb2982: release v0.2.1
+
 ## 0.2.0
 
 ### Minor Changes
