@@ -1,14 +1,14 @@
 {
-  "name": "easy-easy-tinypng-cli",
+  "name": "easy-tinypng-cli",
   "type": "module",
   "version": "0.0.1",
   "description": "",
   "author": "sudongyuer",
   "license": "MIT",
   "funding": "https://github.com/sponsors/sudongyuer",
-  "homepage": "https://github.com/sudongyuer/easy-easy-tinypng-clit#readme",
-  "repository": "https://github.com/sudongyuer/easy-easy-tinypng-clit",
-  "bugs": "https://github.com/sudongyuer/easy-easy-tinypng-clit/issues",
+  "homepage": "https://github.com/sudongyuer/easy-tinypng-clit#readme",
+  "repository": "https://github.com/sudongyuer/easy-tinypng-clit",
+  "bugs": "https://github.com/sudongyuer/easy-tinypng-clit/issues",
   "keywords": [],
   "exports": {
     ".": {
