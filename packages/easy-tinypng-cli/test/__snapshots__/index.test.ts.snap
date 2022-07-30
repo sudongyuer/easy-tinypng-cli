@@ -1,0 +1,9 @@
+// Vitest Snapshot v1
+
+exports[`isFileExist 1`] = `undefined`;
+
+exports[`test jsonRead 1`] = `
+{
+  "uname": "sudongyuer",
+}
+`;
