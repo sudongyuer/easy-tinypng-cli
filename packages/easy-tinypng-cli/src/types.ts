@@ -4,4 +4,5 @@ export interface Config {
 
 export interface ExportConfig {
   configs: Array<Config>
+  APIKey: string
 }

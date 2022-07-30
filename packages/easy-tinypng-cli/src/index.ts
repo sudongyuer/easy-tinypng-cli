@@ -11,5 +11,5 @@ const { config } = await loadConfig<ExportConfig>({
 })
 
 const configs = getAllConfigs(config)
-startOptimize(configs)
+startOptimize(configs, config.APIKey)
 

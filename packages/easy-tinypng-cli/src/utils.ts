@@ -10,7 +10,6 @@ import type { Config, ExportConfig } from './types'
 // eslint-disable-next-line no-console
 const log = console.log
 const RecordFilePath = path.resolve(cwd(), 'record.json')
-tinify.key = 'xfxl7mvvzR3kvT8bDrQQJrDJMF1sW3wJ'
 
 function defineTinyConfig(config: ExportConfig): ExportConfig {
   return config
@@ -23,9 +22,9 @@ export function getAllConfigs(config: ExportConfig) {
   return config.configs
 }
 
-export async function startOptimize(configs: Config[]) {
-  await ConsoleFigFont('tinypng is running 🐻 ！！！')
-  // 遍历配置获取targetDir
+export async function startOptimize(configs: Config[], APIKey: string) {
+  tinify.key = APIKey
+  await ConsoleFigFont('tinypng is running ！！！')
   for (let i = 0; i < configs.length; i++) {
     const { targetDir } = configs[i]
     log(chalk.bgBlue.bold(`${targetDir} watching~~~\n`))
@@ -33,7 +32,6 @@ export async function startOptimize(configs: Config[]) {
       atomic: true,
       followSymlinks: true,
     }).on('all', (event, pathDir) => {
-      // 新增时进行压缩TODO
       switch (event) {
         case 'add':
           reduceImage(pathDir, pathDir)
@@ -41,6 +39,7 @@ export async function startOptimize(configs: Config[]) {
         case 'unlink':
           autoRecord(event, pathDir)
           break
+        case 'change':
         default:
           break
       }
@@ -63,7 +62,6 @@ export function isFileExist(pathDir: string) {
 export async function isRecord(pathDir: string) {
   const isExist = await isFileExist(RecordFilePath)
   if (isExist) {
-    // 读取json文件，判断是否存在key
     const json: Object = fse.readJSONSync(RecordFilePath)
     const fileName = path.basename(pathDir)
     const isRecord = Object.prototype.hasOwnProperty.call(json, fileName)
@@ -78,7 +76,6 @@ export async function record(pathDir: string) {
   const isExist = await isFileExist(RecordFilePath)
   const fileName = getFIleName(pathDir)
   if (isExist) {
-    // 读取json文件，判断是否存在key
     const json: Object = fse.readJSONSync(RecordFilePath)
     // eslint-disable-next-line @typescript-eslint/ban-ts-comment
     // @ts-expect-error
@@ -95,7 +92,6 @@ export async function removeRecord(pathDir: string) {
   const isExist = await isFileExist(RecordFilePath)
   const fileName = getFIleName(pathDir)
   if (isExist) {
-    // 读取json文件，判断是否存在key
     const json: Object = fse.readJSONSync(RecordFilePath)
     // eslint-disable-next-line @typescript-eslint/ban-ts-comment
     // @ts-expect-error
@@ -112,7 +108,7 @@ export function getExtName(pathDir: string) {
   return path.extname(pathDir).slice(1)
 }
 
-export function autoRecord(action: 'add' | 'unlink', pathDir: string) {
+export function autoRecord(action: 'add' | 'unlink' | 'change', pathDir: string) {
   if (!isImageFIle(pathDir))
     return
 
@@ -136,15 +132,14 @@ export async function reduceImage(fileDir: string, targetDir: string) {
 
   if (!isImageFIle(fileDir))
     return
-  const fileName = getFIleName(fileDir)
   try {
     tinify.fromFile(fileDir).toFile(targetDir).then(() => {
-      log(chalk.bgGreenBright(`fileDir:${fileDir} file:${fileName} compress success!`))
+      log(chalk.bgGreenBright(`fileDir:${fileDir} compress success!`))
       autoRecord('add', fileDir)
     })
   }
   catch (err) {
-    log(chalk.bgRed(`fileDir:${fileDir} file:${fileName} compress error!`))
+    log(chalk.bgRed(`fileDir:${fileDir} compress error!`))
   }
 }
 
