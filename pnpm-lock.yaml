@@ -33,7 +33,7 @@ importers:
       '@types/react': ^18.0.15
       '@types/react-dom': ^18.0.6
       '@vitejs/plugin-react': ^2.0.0
-      easy-tinypng-cli: workspace:*
+      easy-easy-tinypng-cli: workspace:*
       react: ^18.2.0
       react-dom: ^18.2.0
       typescript: ^4.6.4
@@ -45,16 +45,19 @@ importers:
       '@types/react': 18.0.15
       '@types/react-dom': 18.0.6
       '@vitejs/plugin-react': 2.0.0_vite@3.0.4
-      easy-tinypng-cli: link:../tinypng-cli
+      easy-easy-tinypng-cli: link:../tinypng-cli
       typescript: 4.7.4
       vite: 3.0.4
 
-  packages/tinypng-cli:
+  packages/easy-tinypng-cli:
     specifiers:
       '@sudongyuer/eslint-config': ^0.1.3
+      '@types/fs-extra': ^9.0.13
       '@types/node': ^18.0.0
       chokidar: ^3.5.3
       eslint: ^8.18.0
+      figlet: ^1.5.2
+      fs-extra: ^10.1.0
       rimraf: ^3.0.2
       tinify: ^1.6.1
       tsx: ^3.6.0
@@ -65,10 +68,46 @@ importers:
       vitest: ^0.15.2
     dependencies:
       chokidar: 3.5.3
+      figlet: 1.5.2
+      fs-extra: 10.1.0
       tinify: 1.6.1
       unconfig: 0.3.5
     devDependencies:
       '@sudongyuer/eslint-config': 0.1.3_eslint@8.20.0+typescript@4.7.4
+      '@types/fs-extra': 9.0.13
+      '@types/node': 18.6.2
+      eslint: 8.20.0
+      rimraf: 3.0.2
+      tsx: 3.8.0
+      typescript: 4.7.4
+      unbuild: 0.7.6
+      vite: 2.9.14
+      vitest: 0.15.2
+
+  packages/tinypng-cli:
+    specifiers:
+      '@sudongyuer/eslint-config': ^0.1.3
+      '@types/fs-extra': ^9.0.13
+      '@types/node': ^18.0.0
+      chokidar: ^3.5.3
+      eslint: ^8.18.0
+      fs-extra: ^10.1.0
+      rimraf: ^3.0.2
+      tinify: ^1.6.1
+      tsx: ^3.6.0
+      typescript: ^4.7.4
+      unbuild: ^0.7.4
+      unconfig: ^0.3.5
+      vite: ^2.9.12
+      vitest: ^0.15.2
+    dependencies:
+      chokidar: 3.5.3
+      fs-extra: 10.1.0
+      tinify: 1.6.1
+      unconfig: 0.3.5
+    devDependencies:
+      '@sudongyuer/eslint-config': 0.1.3_eslint@8.20.0+typescript@4.7.4
+      '@types/fs-extra': 9.0.13
       '@types/node': 18.6.2
       eslint: 8.20.0
       rimraf: 3.0.2
@@ -854,6 +893,12 @@ packages:
 
   /@types/estree/1.0.0:
     resolution: {integrity: sha512-WulqXMDUTYAXCjZnk6JtIHPigp55cVtDgDrO2gHRwhyJto21+1zbVCtOYB2L1F9w4qCQ0rOGWBnBe0FNTiEJIQ==}
+    dev: true
+
+  /@types/fs-extra/9.0.13:
+    resolution: {integrity: sha512-nEnwB++1u5lVDM2UI4c1+5R+FYaKfaAzS4OococimjVm3nQw3TuzH5UNsocrcTBbhnerblyHj4A49qXbIiZdpA==}
+    dependencies:
+      '@types/node': 18.6.2
     dev: true
 
   /@types/is-ci/3.0.0:
@@ -2271,6 +2316,11 @@ packages:
       reusify: 1.0.4
     dev: true
 
+  /figlet/1.5.2:
+    resolution: {integrity: sha512-WOn21V8AhyE1QqVfPIVxe3tupJacq1xGkPTB4iagT6o+P2cAgEOOwIxMftr4+ZCTI6d551ij9j61DFr0nsP2uQ==}
+    engines: {node: '>= 0.4.0'}
+    dev: false
+
   /file-entry-cache/6.0.1:
     resolution: {integrity: sha512-7Gps/XWymbLk2QLYK4NzpMOrYjMhdIxXuIvy2QBsLE6ljuodKvdkWs/cpyJJ3CVIVpH0Oi1Hvg1ovbMzLdFBBg==}
     engines: {node: ^10.12.0 || >=12.0.0}
@@ -2333,7 +2383,6 @@ packages:
       graceful-fs: 4.2.10
       jsonfile: 6.1.0
       universalify: 2.0.0
-    dev: true
 
   /fs-extra/7.0.1:
     resolution: {integrity: sha512-YJDaCJZEnBmcbw13fvdAM9AwNOJwOzrE4pqMqBq5nFiEqXUqHwlK4B+3pUw6JNvfSPtX05xFHtYy/1ni01eGCw==}
@@ -2470,7 +2519,6 @@ packages:
 
   /graceful-fs/4.2.10:
     resolution: {integrity: sha512-9ByhssR2fPVsNZj478qUUbKfmL0+t5BDVyjShtyZZLiK7ZDAArFFfopyOTj0M05wE2tJPisA4iTnnXl2YoPvOA==}
-    dev: true
 
   /grapheme-splitter/1.0.4:
     resolution: {integrity: sha512-bzh50DW9kTPM00T8y4o8vQg89Di9oLJVLW/KaOGIXJWP/iqCN6WKYkbNOF04vFLJhwcpYUh9ydh/+5vpOqV4YQ==}
@@ -2847,7 +2895,6 @@ packages:
       universalify: 2.0.0
     optionalDependencies:
       graceful-fs: 4.2.10
-    dev: true
 
   /jsx-ast-utils/3.3.2:
     resolution: {integrity: sha512-4ZCADZHRkno244xlNnn4AOG6sRQ7iBZ5BbgZ4vW4y5IZw7cVUD1PPeblm1xx/nfmMxPdt/LHsXZW8z/j58+l9Q==}
@@ -4244,7 +4291,6 @@ packages:
   /universalify/2.0.0:
     resolution: {integrity: sha512-hAZsKq7Yy11Zu1DE0OzWjw7nnLZmJZYTDZZyEFHZdUhV8FkH5MCfoU1XMaxXovpyW5nq5scPqq0ZDP9Zyl04oQ==}
     engines: {node: '>= 10.0.0'}
-    dev: true
 
   /untyped/0.4.4:
     resolution: {integrity: sha512-sY6u8RedwfLfBis0copfU/fzROieyAndqPs8Kn2PfyzTjtA88vCk81J1b5z+8/VJc+cwfGy23/AqOCpvAbkNVw==}
