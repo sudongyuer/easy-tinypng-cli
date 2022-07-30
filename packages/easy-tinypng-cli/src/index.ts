@@ -9,8 +9,7 @@ const { config } = await loadConfig<ExportConfig>({
     },
   ],
 })
-// 获取config
+
 const configs = getAllConfigs(config)
-// 监听targetDir
 startOptimize(configs)
 
