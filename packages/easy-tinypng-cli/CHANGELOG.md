@@ -1,5 +1,12 @@
 # easy-tinypng-cli
 
+## 0.2.2
+
+### Patch Changes
+
+- 8a6b2ef: release v0.2.1
+- 4a2d519: update package.json keywords desc
+
 ## 0.2.1
 
 ### Patch Changes
