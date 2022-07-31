@@ -28,6 +28,10 @@ The above steps are very time-consuming. So !!! this `cli` can automatically com
 - 🌝 Background process will not block the main thread
 - 🐻‍❄️ Compressed record logging to avoid repeated compression
 
+<p align="center">
+<img src="https://git.poker/sudongyuer/image-bed/blob/master/20220731/easy-tinypng-cli-preview.xkrdjpi00ao.gif?raw=true" alt="vite-plugin-vue-inspector">
+</p>
+
 ## Usage
 
 ### Install
