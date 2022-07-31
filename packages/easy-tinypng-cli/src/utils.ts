@@ -6,6 +6,7 @@ import chokidar from 'chokidar'
 import fse from 'fs-extra'
 import figlet from 'figlet'
 import chalk from 'chalk'
+import ora from 'ora'
 import type { Config, ExportConfig } from './types'
 // eslint-disable-next-line no-console
 const log = console.log
@@ -132,14 +133,17 @@ export async function reduceImage(fileDir: string, targetDir: string) {
 
   if (!isImageFIle(fileDir))
     return
+  const spinner = ora('Loading').start()
   try {
+    spinner.color = 'blue'
+    spinner.text = chalk.bold.greenBright(`compressing ${fileDir}`)
     tinify.fromFile(fileDir).toFile(targetDir).then(() => {
-      log(chalk.bgGreenBright(`fileDir:${fileDir} compress success!`))
       autoRecord('add', fileDir)
+      spinner.succeed()
     })
   }
   catch (err) {
-    log(chalk.bgRed(`fileDir:${fileDir} compress error!`))
+    spinner.fail()
   }
 }
 

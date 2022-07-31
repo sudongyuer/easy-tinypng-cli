@@ -3,6 +3,7 @@ import path from 'path'
 import fs from 'node:fs'
 import { describe, expect, it } from 'vitest'
 import fse from 'fs-extra'
+import ora from 'ora'
 import { isRecord, record } from '../src/utils'
 describe('should', () => {
   it('exported', () => {
@@ -51,4 +52,12 @@ it('is record', async () => {
   const pathDir = path.resolve(cwd(), '../src/B.png')
   const recorded = await isRecord(pathDir)
   expect(recorded).toEqual(true)
+})
+
+it('test spinner', () => {
+  const spinner = ora('loading').start()
+  setTimeout(() => {
+    spinner.color = 'yellow'
+    spinner.text = 'Loading rainbows'
+  }, 1000)
 })

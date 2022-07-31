@@ -9,7 +9,13 @@
   "homepage": "https://github.com/sudongyuer/easy-tinypng-clit#readme",
   "repository": "https://github.com/sudongyuer/easy-tinypng-clit",
   "bugs": "https://github.com/sudongyuer/easy-tinypng-clit/issues",
-  "keywords": ["tinypng", "image", "compress", "cli", "tiny-cli"],
+  "keywords": [
+    "tinypng",
+    "image",
+    "compress",
+    "cli",
+    "tiny-cli"
+  ],
   "exports": {
     ".": {
       "types": "./dist/index.d.ts",
@@ -58,6 +64,7 @@
     "chokidar": "^3.5.3",
     "figlet": "^1.5.2",
     "fs-extra": "^10.1.0",
+    "ora": "^6.1.2",
     "tinify": "^1.6.1",
     "unconfig": "^0.3.5"
   },
