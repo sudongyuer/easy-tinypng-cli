@@ -2,14 +2,14 @@
   "name": "easy-tinypng-cli",
   "type": "module",
   "version": "0.2.1",
-  "description": "",
+  "description": "A cli can be used to compress images with tinypng.com",
   "author": "sudongyuer",
   "license": "MIT",
   "funding": "https://github.com/sponsors/sudongyuer",
   "homepage": "https://github.com/sudongyuer/easy-tinypng-clit#readme",
   "repository": "https://github.com/sudongyuer/easy-tinypng-clit",
   "bugs": "https://github.com/sudongyuer/easy-tinypng-clit/issues",
-  "keywords": [],
+  "keywords": ["tinypng", "image", "compress", "cli", "tiny-cli"],
   "exports": {
     ".": {
       "types": "./dist/index.d.ts",
