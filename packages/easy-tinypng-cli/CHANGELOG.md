@@ -1,5 +1,11 @@
 # easy-tinypng-cli
 
+## 0.2.4
+
+### Patch Changes
+
+- b9dc668: update README.md
+
 ## 0.2.3
 
 ### Patch Changes
