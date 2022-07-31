@@ -2,7 +2,7 @@
 
 A cli can automatically compress images with [tinypng.com.](https://tinypng.com/)
 
-[![NPM version](https://img.shields.io/github/package-json/v/sudongyuer/easy-tinypng-cli)](https://www.npmjs.com/package/easy-tinypng-cli)
+[![NPM version](https://badge.fury.io/js/easy-tinypng-cli.png)](https://www.npmjs.com/package/easy-tinypng-cli)
 
 
 <p align='center'>
