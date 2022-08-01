@@ -1,5 +1,11 @@
 # easy-tinypng-cli
 
+## 0.2.6
+
+### Patch Changes
+
+- 4da2127: typo fix
+
 ## 0.2.5
 
 ### Patch Changes
