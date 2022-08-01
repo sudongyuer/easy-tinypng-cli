@@ -75,7 +75,7 @@ export async function isRecord(pathDir: string) {
 
 export async function record(pathDir: string) {
   const isExist = await isFileExist(RecordFilePath)
-  const fileName = getFIleName(pathDir)
+  const fileName = getFileName(pathDir)
   if (isExist) {
     const json: Object = fse.readJSONSync(RecordFilePath)
     // eslint-disable-next-line @typescript-eslint/ban-ts-comment
@@ -91,7 +91,7 @@ export async function record(pathDir: string) {
 export async function removeRecord(pathDir: string) {
   const RecordFilePath = path.resolve(cwd(), 'record.json')
   const isExist = await isFileExist(RecordFilePath)
-  const fileName = getFIleName(pathDir)
+  const fileName = getFileName(pathDir)
   if (isExist) {
     const json: Object = fse.readJSONSync(RecordFilePath)
     // eslint-disable-next-line @typescript-eslint/ban-ts-comment
@@ -101,7 +101,7 @@ export async function removeRecord(pathDir: string) {
   }
 }
 
-export function getFIleName(pathDir: string) {
+export function getFileName(pathDir: string) {
   return path.basename(pathDir)
 }
 
@@ -110,7 +110,7 @@ export function getExtName(pathDir: string) {
 }
 
 export function autoRecord(action: 'add' | 'unlink' | 'change', pathDir: string) {
-  if (!isImageFIle(pathDir))
+  if (!isImageFile(pathDir))
     return
 
   if (action === 'add')
@@ -120,7 +120,7 @@ export function autoRecord(action: 'add' | 'unlink' | 'change', pathDir: string)
     removeRecord(pathDir)
 }
 
-export function isImageFIle(pathDir: string) {
+export function isImageFile(pathDir: string) {
   const fileExtname = getExtName(pathDir)
   const supportFiles = ['webp', 'jpeg', 'png']
   return supportFiles.includes(fileExtname)
@@ -131,7 +131,7 @@ export async function reduceImage(fileDir: string, targetDir: string) {
   if (recorded)
     return
 
-  if (!isImageFIle(fileDir))
+  if (!isImageFile(fileDir))
     return
   const spinner = ora('Loading').start()
   try {
