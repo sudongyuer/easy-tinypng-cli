@@ -6,9 +6,9 @@
   "author": "sudongyuer",
   "license": "MIT",
   "funding": "https://github.com/sponsors/sudongyuer",
-  "homepage": "https://github.com/sudongyuer/easy-tinypng-clit#readme",
-  "repository": "https://github.com/sudongyuer/easy-tinypng-clit",
-  "bugs": "https://github.com/sudongyuer/easy-tinypng-clit/issues",
+  "homepage": "https://github.com/sudongyuer/easy-tinypng-cli#readme",
+  "repository": "https://github.com/sudongyuer/easy-tinypng-cli",
+  "bugs": "https://github.com/sudongyuer/easy-tinypng-cli/issues",
   "keywords": [
     "tinypng",
     "image",
