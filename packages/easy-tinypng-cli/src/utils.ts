@@ -7,7 +7,17 @@ import fse from 'fs-extra'
 import figlet from 'figlet'
 import chalk from 'chalk'
 import ora from 'ora'
+import { Command } from 'commander'
+import fg from 'fast-glob'
 import type { Config, ExportConfig } from './types'
+
+const program = new Command()
+program
+  .option('-o, --once', 'compress just once')
+program.parse(process.argv)
+let compressedImagesNumber = 0
+let needCompressImagesNumber = 0
+const options = program.opts()
 // eslint-disable-next-line no-console
 const log = console.log
 const RecordFilePath = path.resolve(cwd(), 'record.json')
@@ -25,17 +35,27 @@ export function getAllConfigs(config: ExportConfig) {
 
 export async function startOptimize(configs: Config[], APIKey: string) {
   tinify.key = APIKey
-  await ConsoleFigFont('tinypng is running ！！！')
+  await ConsoleFigFont('tinypng cli is running ！！！')
+  for (let i = 0; i < configs.length; i++) {
+    const { targetDir } = configs[i]
+    const count = await getTargetFileImagesCount(targetDir)
+    needCompressImagesNumber += count
+  }
+  if (!needCompressImagesNumber) {
+    console.warn('There is no images need to compress!')
+    process.exit(0)
+  }
+
   for (let i = 0; i < configs.length; i++) {
     const { targetDir } = configs[i]
     log(chalk.bgBlue.bold(`${targetDir} watching~~~\n`))
     chokidar.watch(path.resolve(cwd(), targetDir), {
       atomic: true,
       followSymlinks: true,
-    }).on('all', (event, pathDir) => {
+    }).on('all', async (event, pathDir) => {
       switch (event) {
         case 'add':
-          reduceImage(targetDir, pathDir, pathDir)
+          await reduceImage(targetDir, pathDir, pathDir)
           break
         case 'unlink':
           autoRecord(targetDir, event, pathDir)
@@ -106,27 +126,33 @@ export function getExtName(pathDir: string) {
   return path.extname(pathDir).slice(1)
 }
 
-export function autoRecord(watchFileDir: string, action: 'add' | 'unlink' | 'change', pathDir: string) {
+export async function autoRecord(watchFileDir: string, action: 'add' | 'unlink' | 'change', pathDir: string) {
   if (!isImageFile(pathDir))
     return
 
   if (action === 'add')
-    record(watchFileDir, pathDir)
+    await record(watchFileDir, pathDir)
 
   if (action === 'unlink')
-    removeRecord(watchFileDir, pathDir)
+    await removeRecord(watchFileDir, pathDir)
 }
 
 export function isImageFile(pathDir: string) {
   const fileExtname = getExtName(pathDir)
-  const supportFiles = ['webp', 'jpeg', 'png']
+  const supportFiles = ['webp', 'jpeg', 'png', 'jpg']
   return supportFiles.includes(fileExtname)
 }
 
 export async function reduceImage(watchFileDir: string, fileDir: string, targetDir: string) {
   const recorded = await isRecord(watchFileDir, fileDir)
-  if (recorded)
+  if (recorded) {
+    compressedImagesNumber++
+    if (compressedImagesNumber === needCompressImagesNumber && options.once) {
+      console.warn(chalk.bgGreen.bold('\nAll images have been compressed!'))
+      process.exit(0)
+    }
     return
+  }
 
   if (!isImageFile(fileDir))
     return
@@ -134,9 +160,14 @@ export async function reduceImage(watchFileDir: string, fileDir: string, targetD
   try {
     spinner.color = 'blue'
     spinner.text = chalk.bold.greenBright(`compressing ${fileDir}`)
-    tinify.fromFile(fileDir).toFile(targetDir).then(() => {
-      autoRecord(watchFileDir, 'add', fileDir)
+    tinify.fromFile(fileDir).toFile(targetDir).then(async () => {
+      await autoRecord(watchFileDir, 'add', fileDir)
+      compressedImagesNumber++
       spinner.succeed()
+      if (compressedImagesNumber === needCompressImagesNumber && options.once) {
+        console.warn(chalk.bgGreen.bold('\nAll images have been compressed!'))
+        process.exit(0)
+      }
     })
   }
   catch (err) {
@@ -156,4 +187,14 @@ export function ConsoleFigFont(str: string) {
       resolve('')
     })
   })
+}
+
+export async function getTargetFileImagesCount(targetDir: string) {
+  const patternArray = [
+    `${path.join(process.cwd(), targetDir, '/**/*.png')}`.replace(/\\/g, '/'),
+    `${path.join(process.cwd(), targetDir, '/**/*.jpeg')}`.replace(/\\/g, '/'),
+    `${path.join(process.cwd(), targetDir, '/**/*.jpg')}`.replace(/\\/g, '/'),
+  ]
+  const entries = await fg(patternArray, { dot: true })
+  return entries.length
 }
