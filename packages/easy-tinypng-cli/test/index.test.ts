@@ -4,6 +4,7 @@ import fs from 'node:fs'
 import { describe, expect, it } from 'vitest'
 import fse from 'fs-extra'
 import ora from 'ora'
+import fg from 'fast-glob'
 import { isRecord, record } from '../src/utils'
 describe('should', () => {
   it('exported', () => {
@@ -37,7 +38,7 @@ it('test pathName exist', () => {
   expect(fileName).toEqual('hello.json')
 })
 
-it('test writeJsonFile', () => {
+it.skip('test writeJsonFile', () => {
   const pathDir = path.resolve(cwd(), '../src/C.png')
   record(pathDir)
 })
@@ -61,3 +62,15 @@ it('test spinner', () => {
     spinner.text = 'Loading rainbows'
   }, 1000)
 })
+
+it('png jpeg jpg pattern', async () => {
+  const targetDir = './_src/images'
+  const patternArray = [
+    `${path.join(process.cwd(), targetDir)}**/*.png`.replace(/\\/g, '/'),
+    `${path.join(process.cwd(), targetDir)}**/*.jpeg`.replace(/\\/g, '/'),
+    `${path.join(process.cwd(), targetDir)}**/*.jpg`.replace(/\\/g, '/'),
+  ]
+  const entries = await fg(patternArray, { dot: true })
+  expect(entries.length).toEqual(3)
+})
+
