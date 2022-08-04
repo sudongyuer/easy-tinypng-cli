@@ -1,5 +1,11 @@
 # easy-tinypng-cli
 
+## 0.3.0
+
+### Minor Changes
+
+- 6289760: release v0.3.0 all fn depend on relative path
+
 ## 0.2.6
 
 ### Patch Changes
