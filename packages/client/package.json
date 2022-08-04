@@ -7,7 +7,7 @@
     "dev": "vite",
     "build": "tsc && vite build",
     "preview": "vite preview",
-    "optimize": "tiny"
+    "optimize": "tiny --once"
   },
   "dependencies": {
     "react": "^18.2.0",
