@@ -1,5 +1,9 @@
 {
-  "infojs.png": "/Users/sudongyu/study/easy-tinypng-cli/packages/client/src/images/infojs.png",
-  "favicon.png": "/Users/sudongyu/study/easy-tinypng-cli/packages/client/src/images/favicon.png",
-  "Wechat.jpeg": "/Users/sudongyu/study/easy-tinypng-cli/packages/client/src/images/Wechat.jpeg"
+  "123123.png": "123123.png",
+  "infojs.png": "infojs.png",
+  "images/infojs.png": "images/infojs.png",
+  "images/favicon.png": "images/favicon.png",
+  "favicon.png": "favicon.png",
+  "images copy/123123.png": "images copy/123123.png",
+  "images/Wechat.jpeg": "images/Wechat.jpeg"
 }
