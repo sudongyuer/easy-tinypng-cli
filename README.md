@@ -69,6 +69,14 @@ export default defineTinyConfig({
   }
 }
 ```
+or
+```js
+{
+  "scripts": {
+    "optimizeImages": "tiny --once" //only compress once no watching files change
+  }
+}
+```
 
 ## Author
 
