@@ -1,5 +1,11 @@
 # easy-tinypng-cli
 
+## 0.4.0
+
+### Minor Changes
+
+- d030aab: feat: support compand --once
+
 ## 0.3.0
 
 ### Minor Changes
