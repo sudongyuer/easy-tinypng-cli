@@ -62,6 +62,8 @@
   "dependencies": {
     "chalk": "4.1.2",
     "chokidar": "^3.5.3",
+    "commander": "^9.4.0",
+    "fast-glob": "^3.2.11",
     "figlet": "^1.5.2",
     "fs-extra": "^10.1.0",
     "ora": "^6.1.2",
