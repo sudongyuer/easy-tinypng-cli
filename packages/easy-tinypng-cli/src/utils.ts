@@ -35,10 +35,10 @@ export async function startOptimize(configs: Config[], APIKey: string) {
     }).on('all', (event, pathDir) => {
       switch (event) {
         case 'add':
-          reduceImage(pathDir, pathDir)
+          reduceImage(targetDir, pathDir, pathDir)
           break
         case 'unlink':
-          autoRecord(event, pathDir)
+          autoRecord(targetDir, event, pathDir)
           break
         case 'change':
         default:
@@ -60,12 +60,11 @@ export function isFileExist(pathDir: string) {
   })
 }
 
-export async function isRecord(pathDir: string) {
+export async function isRecord(watchFileDir: string, pathDir: string) {
   const isExist = await isFileExist(RecordFilePath)
   if (isExist) {
     const json: Object = fse.readJSONSync(RecordFilePath)
-    const fileName = path.basename(pathDir)
-    const isRecord = Object.prototype.hasOwnProperty.call(json, fileName)
+    const isRecord = Object.prototype.hasOwnProperty.call(json, path.relative(watchFileDir, pathDir))
     return isRecord
   }
   else {
@@ -73,30 +72,28 @@ export async function isRecord(pathDir: string) {
   }
 }
 
-export async function record(pathDir: string) {
+export async function record(watchFileDir: string, pathDir: string) {
   const isExist = await isFileExist(RecordFilePath)
-  const fileName = getFileName(pathDir)
   if (isExist) {
     const json: Object = fse.readJSONSync(RecordFilePath)
     // eslint-disable-next-line @typescript-eslint/ban-ts-comment
     // @ts-expect-error
-    json[fileName] = pathDir
+    json[path.relative(watchFileDir, pathDir)] = path.relative(watchFileDir, pathDir)
     fse.writeJSONSync(RecordFilePath, json)
   }
   else {
-    fse.writeJSONSync(RecordFilePath, { [fileName]: pathDir })
+    fse.writeJSONSync(RecordFilePath, { [path.relative(watchFileDir, pathDir)]: path.relative(watchFileDir, pathDir) })
   }
 }
 
-export async function removeRecord(pathDir: string) {
+export async function removeRecord(watchFileDir: string, pathDir: string) {
   const RecordFilePath = path.resolve(cwd(), 'record.json')
   const isExist = await isFileExist(RecordFilePath)
-  const fileName = getFileName(pathDir)
   if (isExist) {
     const json: Object = fse.readJSONSync(RecordFilePath)
     // eslint-disable-next-line @typescript-eslint/ban-ts-comment
     // @ts-expect-error
-    delete json[fileName]
+    delete json[path.relative(watchFileDir, pathDir)]
     fse.writeJSONSync(RecordFilePath, json)
   }
 }
@@ -109,15 +106,15 @@ export function getExtName(pathDir: string) {
   return path.extname(pathDir).slice(1)
 }
 
-export function autoRecord(action: 'add' | 'unlink' | 'change', pathDir: string) {
+export function autoRecord(watchFileDir: string, action: 'add' | 'unlink' | 'change', pathDir: string) {
   if (!isImageFile(pathDir))
     return
 
   if (action === 'add')
-    record(pathDir)
+    record(watchFileDir, pathDir)
 
   if (action === 'unlink')
-    removeRecord(pathDir)
+    removeRecord(watchFileDir, pathDir)
 }
 
 export function isImageFile(pathDir: string) {
@@ -126,8 +123,8 @@ export function isImageFile(pathDir: string) {
   return supportFiles.includes(fileExtname)
 }
 
-export async function reduceImage(fileDir: string, targetDir: string) {
-  const recorded = await isRecord(fileDir)
+export async function reduceImage(watchFileDir: string, fileDir: string, targetDir: string) {
+  const recorded = await isRecord(watchFileDir, fileDir)
   if (recorded)
     return
 
@@ -138,7 +135,7 @@ export async function reduceImage(fileDir: string, targetDir: string) {
     spinner.color = 'blue'
     spinner.text = chalk.bold.greenBright(`compressing ${fileDir}`)
     tinify.fromFile(fileDir).toFile(targetDir).then(() => {
-      autoRecord('add', fileDir)
+      autoRecord(watchFileDir, 'add', fileDir)
       spinner.succeed()
     })
   }
