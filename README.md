@@ -6,7 +6,7 @@ A cli can automatically compress images with [tinypng.com.](https://tinypng.com/
 
 
 <p align='center'>
-<img src='https://git.poker/sudongyuer/image-bed/blob/master/20220731/easy-tinypng-cli.png?raw=true' width='200'/>
+<img src='https://cdn.staticaly.com/gh/sudongyuer/image-bed@master/20220731/easy-tinypng-cli.png?raw=true' width='200'/>
 </p>
 
 ## Why
