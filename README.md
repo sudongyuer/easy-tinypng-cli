@@ -29,7 +29,7 @@ The above steps are very time-consuming. So !!! this `cli` can automatically com
 - 🐻‍❄️ Compressed record logging to avoid repeated compression
 
 <p align="center">
-<img src="https://git.poker/sudongyuer/image-bed/blob/master/20220731/easy-tinypng-cli-preview.xkrdjpi00ao.gif?raw=true" alt="vite-plugin-vue-inspector">
+<img src="https://cdn.staticaly.com/gh/sudongyuer/image-bed@master/20220731/easy-tinypng-cli-preview.xkrdjpi00ao.gif?raw=true" alt="vite-plugin-vue-inspector">
 </p>
 
 ## Usage
