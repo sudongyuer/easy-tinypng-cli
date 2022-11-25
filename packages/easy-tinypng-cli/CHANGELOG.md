@@ -1,5 +1,11 @@
 # easy-tinypng-cli
 
+## 0.4.1
+
+### Patch Changes
+
+- 60d77d4: improve record json
+
 ## 0.4.0
 
 ### Minor Changes
