@@ -99,10 +99,10 @@ export async function record(watchFileDir: string, pathDir: string) {
     // eslint-disable-next-line @typescript-eslint/ban-ts-comment
     // @ts-expect-error
     json[path.relative(watchFileDir, pathDir)] = path.relative(watchFileDir, pathDir)
-    fse.writeJSONSync(RecordFilePath, json)
+    fse.writeJSONSync(RecordFilePath, json, { spaces: 2 })
   }
   else {
-    fse.writeJSONSync(RecordFilePath, { [path.relative(watchFileDir, pathDir)]: path.relative(watchFileDir, pathDir) })
+    fse.writeJSONSync(RecordFilePath, { [path.relative(watchFileDir, pathDir)]: path.relative(watchFileDir, pathDir) }, { spaces: 2 })
   }
 }
 
@@ -114,7 +114,7 @@ export async function removeRecord(watchFileDir: string, pathDir: string) {
     // eslint-disable-next-line @typescript-eslint/ban-ts-comment
     // @ts-expect-error
     delete json[path.relative(watchFileDir, pathDir)]
-    fse.writeJSONSync(RecordFilePath, json)
+    fse.writeJSONSync(RecordFilePath, json, { spaces: 2 })
   }
 }
 

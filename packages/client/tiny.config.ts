@@ -5,5 +5,5 @@ export default defineTinyConfig({
       targetDir: './src/images',
     },
   ],
-  APIKey: '',
+  APIKey: 'mDMtybkYNL2rCcwGBPtSRFn21Jx81R5F',
 })
